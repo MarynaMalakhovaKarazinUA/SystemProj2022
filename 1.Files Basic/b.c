@@ -6,21 +6,19 @@
 
 int main() {
     int result[26];
+    char buf;
+    ssize_t nr;
 
     for(int i = 0; i < 26; i++) {
         result[i] = 0;
     }
 
-    int fd;
-
-    fd = open("./output.txt", O_RDONLY);
+    int fd = open("./output.txt", O_RDONLY);
 
     if(fd == -1) {
-        return 1;
+        return 5;
     }
 
-    char buf;
-    ssize_t nr;
     while((nr = read(fd, &buf, sizeof(char))) != 0) {
         if(buf >= 'A' && buf <= 'Z') {
             result[buf - 'A'] += 1;

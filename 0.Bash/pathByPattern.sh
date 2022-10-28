@@ -11,4 +11,3 @@ else
     ls -a "$DIR_PATH" | readlink -f $(grep "$PATTERN") > output.txt
     echo 'Check result in output.txt'
 fi
-

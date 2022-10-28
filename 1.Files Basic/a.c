@@ -37,14 +37,18 @@ int main() {
 
     if(fd == -1) {
         fprintf(stderr, "%s", strerror(errno));
-        return 1;
+        return 5;
     }
 
-    write(fd, &input, strlen(input));
+    if(write(fd, &input, strlen(input)) == strlen(input)) {
+        printf("Result wrote in output.txt\n");
+        close(fd);
+    } else {
+        printf("Error writing to output.txt\n");
+        fprintf(stderr, "%s", strerror(errno));
+        close(fd);
+        return 5;
+    }
     
-    printf("Result wrote in output.txt\n");
-
-    close(fd);    
-
     return 0;
 }
