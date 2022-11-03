@@ -75,5 +75,5 @@ void enQueue(int value,int *items,int *rear,int size,int *m) {
      }
     }
   }
-            printf("\n");
+  printf("\n");
 }
