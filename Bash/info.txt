@@ -1,0 +1,2 @@
+/mnt/d/GitHab/SystemProj2022/Bash/test.txt
+/mnt/d/GitHab/SystemProj2022/Bash/test1.txt
