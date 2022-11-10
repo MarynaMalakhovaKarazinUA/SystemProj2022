@@ -20,6 +20,7 @@ int main() {
       }
       else {
         isLatin = false;
+        __fpurge(stdin);
       }
 
       if(isLatin == true){
