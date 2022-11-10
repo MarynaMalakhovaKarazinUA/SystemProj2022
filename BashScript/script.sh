@@ -1,9 +1,9 @@
 directory_name=$1
 file_name=$2
 
-if [ -z "$directory_name" ] || [ -z "$file_name" ];
+if [ -z "$directory_name" ] || [ -z "$file_name"];
 	then
-		echo "script is empty"
+		echo "Correct usage way  script [Path] [Filename]"
 		exit 0
 fi
 
