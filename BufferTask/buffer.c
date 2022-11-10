@@ -16,7 +16,7 @@ void addFunction(int buff[],int size, int value) {
     putIndex++;
     if (putIndex > size) {
         putIndex = 1;
-        if ((putIndex - 1)  == getIndex) {
+        if ((putIndex - 1) == getIndex) {
             getIndex++;
             if (getIndex >= size) {
                 getIndex = 0;
