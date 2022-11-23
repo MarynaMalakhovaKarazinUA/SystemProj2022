@@ -1,0 +1,4 @@
+/home/project/bashScript/main.c
+/home/project/bashScript/main2.c
+/home/project/bashScript/main3.c
+/home/project/bashScript/main4.c
