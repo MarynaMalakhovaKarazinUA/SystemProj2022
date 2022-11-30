@@ -90,7 +90,6 @@ node* getNodeByIndex(ring_buffer* buf, int index) {
     node* current = buf->head;
     int counter = 0;
     while (counter != index) {
-        printf("current: %c\n", current->val);
         current = current->next;
         counter++;
     }
@@ -117,10 +116,7 @@ void setValue(ring_buffer* buf, char val) {
     new_node->prev = NULL;
 
     node *cur = getNodeByIndex(buf, buf->putIndex);
-    printf("cur: %c\n", cur->val);
-    printf("node: %c\n", new_node->val);
     if (cur->prev == NULL){
-        printf("IN NULL STATE");
         buf->head = new_node;
     }
     else {
