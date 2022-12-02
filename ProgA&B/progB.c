@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define int justRoute[33] = {0};
+#define char myArray[256];
+
 int main() {
 
     char * filename = "useless.txt";
-    char myArray[256];
-    int justRoute[33] = {0};
     FILE *file;
 
 	file = fopen(filename, "r");
@@ -17,7 +18,7 @@ int main() {
     while((fgets(myArray, 256, file))!=NULL) {
         justRoute[(int) myArray[0] % 33] += 1;
     }
-    
+
 	int i;
     for(i = (int)'a'; i <= (int)'z'; i++){
         if(justRoute[(char) i % 33] > 0) {

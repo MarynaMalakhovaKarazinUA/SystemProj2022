@@ -44,7 +44,7 @@ static void skeleton_daemon()
 
     openlog("firstdaemon", LOG_PID, LOG_DAEMON);
 }
-C int main()
+int main()
 {
     skeleton_daemon();
 
