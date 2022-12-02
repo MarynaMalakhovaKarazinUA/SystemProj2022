@@ -11,8 +11,7 @@ int main() {
 	file = fopen(filename, "r");
     if(file == NULL)
     {
-        perror("Error opening file");
-      	return(-1);
+        return perror("Error opening file");
    }
 
     while((fgets(myArray, 256, file))!=NULL) {
