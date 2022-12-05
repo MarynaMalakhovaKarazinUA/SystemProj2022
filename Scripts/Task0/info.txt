@@ -1,0 +1,4 @@
+/workspaces/projects/task1_programA
+/workspaces/projects/task1_programA.c
+/workspaces/projects/task2_programB
+/workspaces/projects/task2_programB.c
