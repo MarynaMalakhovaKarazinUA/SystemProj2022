@@ -113,10 +113,16 @@ ring_buffer* buff_init(int size) {
     return buff;
 } 
 
+void wrongInputError() {
+    printf("Wrong input!\n");
+    exit(1);
+}
+
 int main() {
     int size;
     printf("Enter size of buffer: ");
-    scanf(" %d", &size);
+    if (scanf(" %d", &size) < 0) 
+        wrongInputError();
     ring_buffer *buff = buff_init(size);
 
     int choice = 0;
@@ -129,17 +135,19 @@ int main() {
         printf("4.Get current time\n");
         printf("0.Save and exit\n");
         printf(">> ");
-        scanf(" %d", &choice);
+        if (scanf(" %d", &choice) < 0)
+            wrongInputError();
 
         switch(choice) {
-            case 1:
+            case 1: ;
                 char user_value;
                 printf("Enter the value: ");
-                scanf(" %c", &user_value);   
+                if (scanf(" %c", &user_value) < 0)
+                    wrongInputError();   
                 pushToBuff(buff, user_value);
                 buff->record_id++;
                 break;
-            case 2:
+            case 2: ;
                 if (isEmpty(buff) == 0) {
                     printf("No elements in buffer\n");
                     break;

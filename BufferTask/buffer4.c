@@ -33,6 +33,11 @@ typedef struct ring_buffer {
     int user_amount;
 }ring_buffer;
 
+void wrongInputError() {
+    printf("Wrong input!\n");
+    exit(1);
+}
+
 time_t getCurrentDate() {
     time_t t;
     time(&t);
@@ -227,7 +232,8 @@ void changeUser(ring_buffer *buf) {
         printf("writer#%d\n", i);
     }
     printf(">> ");
-    scanf(" %d", &choice);
+    if (scanf(" %d", &choice) < 0)
+        wrongInputError();
 
     if (choice < 1 || choice > buf->user_amount) {
         printf("There isn`t such user\n");
@@ -240,9 +246,11 @@ int main() {
     int size;
     int user_amount;
     printf("Enter size of buffer: ");
-    scanf(" %d", &size);
+    if (scanf(" %d", &size) < 0)
+        wrongInputError();
     printf("Enter the number of users: ");
-    scanf(" %d", &user_amount);
+    if (scanf(" %d", &user_amount) < 0)
+        wrongInputError();
     ring_buffer *buff = buff_init(size, user_amount);
 
     int choice = 0;
@@ -255,13 +263,15 @@ int main() {
         printf("4.Change writter\n");
         printf("0.Save and exit\n");
         printf(">> ");
-        scanf(" %d", &choice);
+        if (scanf(" %d", &choice) < 0)
+            wrongInputError();
 
         switch(choice) {
             case 1:
                 char user_value;
                 printf("Enter the value: ");
-                scanf(" %c", &user_value);
+                if (scanf(" %c", &user_value) < 0)
+                    wrongInputError();
                 if(buff->head->val == '\0') {
                     headInit(buff, user_value);
                 } 

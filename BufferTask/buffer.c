@@ -43,10 +43,17 @@ void getAll(int buff[], int size) {
     printf("\n");
 }
 
+void wrongInputError() {
+    printf("Wrong input!\n");
+    exit(1);
+}
+
 int main() {
     int size;
     printf("Enter size of buffer: ");
-    if (scanf(" %d", &size) > 0)
+    if (scanf(" %d", &size) < 0) {
+        wrongInputError();
+    }
     int buff[size];
 
     int choice = 0;
@@ -59,16 +66,20 @@ int main() {
         printf("3.Show and clean the buffer\n");
         printf("4.Exit\n");
         printf(">> ");
-        scanf(" %d", &choice);
+        if (scanf(" %d", &choice) < 0) {
+            wrongInputError();
+        }
 
         switch(choice) {
-            case 1: 
+            case 1: ;
                 int value;
                 printf("Enter the value: ");
-                scanf(" %d", &value);   
+                if (scanf(" %d", &value) < 0) {
+                    wrongInputError();
+                }   
                 addFunction(buff, size, value);
                 break;
-            case 2:
+            case 2: ;
                 int res = getFunction(buff, size);
                 printf("Value: %d\n", res);
                 break;
@@ -77,8 +88,7 @@ int main() {
                 break;
             case 4:
                 exit(1);
-                break;
-            default:                    
+                break;               
         }
     }
 }
