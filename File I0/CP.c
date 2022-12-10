@@ -19,26 +19,26 @@ int main(int argc, char *argv[])
 
 	if (argc != 3 || strcmp(argv[1], "--help") == 0) {
         printf("Help: %s old-file new-file\n", argv[0]);
-		return 1;
+		return 87;
 	}
 	
 	inputFd = open(argv[1], O_RDONLY);
 	if (inputFd == -1) {
 		perror("Cannot open source file");
-		return -1;
+		return 5;
 	}
 	
 	outputFd = open(argv[2], openFlags, filePerms);
 	if (outputFd == -1) {
 		close(inputFd);
 		perror("Cannot open destiantion file");
-		return -1;
+		return 5;
 	}
 	
 	while ((numRead = read(inputFd, buffer, BUF_SIZE)) > 0) {
 		if (write(outputFd, buffer, numRead) != numRead) {
 			perror("write() returned error or partial write occurred");
-			return -1;
+			return 5;
 		}
 		for (int i = 0; i < numRead; i++) {
 			if (buffer[i] == '\0') {
@@ -53,15 +53,15 @@ int main(int argc, char *argv[])
 	
 	if (numRead == -1) {
 		perror("Read");
-		return -1;
+		return 5;
 	}
 	if (close(inputFd) == -1) {
 		perror("Close input");
-		return -1;
+		return 5;
 	}
 	if (close(outputFd) == -1) {
 		perror("Close output");
-		return -1;
+		return 5;
 	}
 
 	return 0;

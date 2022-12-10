@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
         printf("Help:\n");
         printf("%s destiantion-file - to write text to the file with the given name and overwrite it\n", argv[0]);
         printf("%s -a destiantion-file - to append text to the end of a file with the given name if it already exists\n", argv[0]);
-		return 1;
+		return 87;
     }
 
     char *file_name = retrieveFileFromArguments(argc, argv);
@@ -29,19 +29,19 @@ int main(int argc, char *argv[])
         case 'a': {
             if((fp = fopen(file_name, "a")) == NULL) {
                 perror("Cannot open destiantion file");
-                return -1;
+                return 5;
             }
             break;
         }
         case -1: {
             if((fp = fopen(file_name, "w")) == NULL) {
                 perror("Cannot open destiantion file");
-                return -1;
+                return 5;
             }
             break;
         }
         default: {
-            return -1;
+            return 5;
         }
     }
 
