@@ -34,7 +34,10 @@ int main(int argc, char *argv[]) {
     ssize_t numRead;
 
     while ((numRead = read(fd[0], buf, sizeof(buf))) != 0) {
-        write(fd[1], buf, numRead);
+        if(write(fd[1], buf, numRead) == -1) {
+            perror("Error writing to file");
+            return 5; // IO Error
+        }
     }
 
     return 0;
