@@ -6,12 +6,20 @@
 #define MAX_READ 256
 
 int main(int argc, char *argv[]) {
-    if(argc == 1) {
+    if(argc != 2 && argc != 3) {
         printf("USAGE: tee [-a] fileName\n");
         return 1;
     }
 
-    char* fileName = argv[optind];
+    char* fileName;
+    
+    for (int i = 1; i < argc; i++) {
+        char *arg = argv[i];
+        if (arg[0] != '-') {
+            fileName = arg;
+        }
+    }
+
     int fd; 
     int append = 0;
     int optc;
