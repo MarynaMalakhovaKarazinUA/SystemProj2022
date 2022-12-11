@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
     char buf[MAX_READ + 1];
     ssize_t numRead;
 
+    printf("\\\\ Just press ENTER to end the program\n");
     while(1) {
         numRead = read(STDIN_FILENO, buf, MAX_READ);
 
@@ -60,7 +61,12 @@ int main(int argc, char *argv[]) {
             perror("Error");
             return 5; // IO Error
         }
-        
+
+        if(*buf == '\n') {
+            close(fd);
+            break;
+        }
+
         buf[numRead] = '\0';
 
         if(write(STDOUT_FILENO, buf, strlen(buf)) == -1) {
