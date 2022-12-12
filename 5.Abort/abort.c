@@ -48,4 +48,5 @@ int main(int argc, char *argv[]) {
 
 void abort_handler() {
     printf("Oops.. You reached SIGABRT signal :(\n");
+    exit(EXIT_FAILURE);
 }
