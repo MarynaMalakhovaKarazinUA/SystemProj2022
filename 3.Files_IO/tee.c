@@ -5,19 +5,19 @@
 
 #define MAX_READ 256
 
+char* getFileName(int argc, char *argv[]);
+
 int main(int argc, char *argv[]) {
     if(argc != 2 && argc != 3) {
         printf("USAGE: tee [-a] fileName\n");
         return 1;
     }
 
-    char* fileName;
-    
-    for (int i = 1; i < argc; i++) {
-        char *arg = argv[i];
-        if (arg[0] != '-') {
-            fileName = arg;
-        }
+    char* fileName = getFileName(argc, argv);
+
+    if(fileName == NULL) {
+        printf("ERROR: Filename not specified\n");
+        return 1;
     }
 
     int fd; 
@@ -80,4 +80,15 @@ int main(int argc, char *argv[]) {
     }
 
     return 0;
+}
+
+char* getFileName(int argc, char *argv[]) {
+    char* fileName = NULL;
+    for (int i = 1; i < argc; i++) {
+        char *arg = argv[i];
+        if (arg[0] != '-') {
+            fileName = arg;
+        }
+    }
+    return fileName;
 }
