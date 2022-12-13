@@ -34,8 +34,16 @@ int main() {
         printf("\n2. Read from buffer");
         printf("\n3. Print buffer");
         printf("\n0. Exit");
-        printf("\n-> ");
-        scanf("%d", &menu);
+        while (1)
+        {
+            printf("\n-> ");
+            __fpurge(stdin);
+            if(scanf("%d", &menu) != 1) {
+                printf("\nEntry error. Try again with the numbers.\n");
+            } else {
+                break;
+            }
+        }
         printf("\n");
         switch (menu) {
             case 1: {
