@@ -53,7 +53,9 @@ static void process_demon()
 
     umask(0);
 
-    chdir("/");
+    if((chdir("/")) < 0) {
+        exit(EXIT_FAILURE);
+    }
 
     int tmp;
     
