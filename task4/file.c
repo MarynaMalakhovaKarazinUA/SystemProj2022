@@ -30,6 +30,11 @@ void resetGetIndex(ring_buffer *temp) {
     }
 }
 
+void printError() {
+    printf("Помилка! Ви ввели невірне значення!\n");
+    exit(1);
+}
+
 void resetPutIndex(ring_buffer *temp) {
      if(temp->putIndex >= temp->size) {
         temp->putIndex = 0;
@@ -131,7 +136,7 @@ int main() {
     printf("Введіть розмір буфера:\n >>> ");
 
     if(scanf("%d", &size) < 0) 
-        ErrorInput();
+        printError();
     
     ring_buffer *buff = buff_init(size);
 

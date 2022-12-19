@@ -52,9 +52,3 @@ int main(){
     return 0;
 }
 
-void addQueue(int value, int *items, int *rear, int size, int *m) {
-    if (*rear == size - 1) {
-        *rear = -1; 
-        *m = 1;
-    }
-}
